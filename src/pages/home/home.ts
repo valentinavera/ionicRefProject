@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
+//import { referenciasService } from '../../services/referenciasServices';
 import { classReferencia } from '../classReferencia';
 import { ReferenciaPage } from '../referencia/referencia';
 
@@ -9,7 +10,10 @@ import { ReferenciaPage } from '../referencia/referencia';
 })
 export class HomePage {
   referencias: Array<classReferencia> = [];
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, 
+    //public referenciasService:referenciasService,
+    public alertCtrl:AlertController, 
+    public loadingCtrl:LoadingController) {
     this.referencias = [
       {idreferencia: 1,
         titulopub: 'imp',
@@ -30,7 +34,37 @@ export class HomePage {
   }
   
   deleteReferencia(referencia: classReferencia){
-
+    /*const confirm = this.alertCtrl.create({
+      title: 'Eliminar referencia',
+      message: '¿Estás seguro de eliminar esta referencia?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Cancelar clicked');
+          }
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            console.log('Eliminar clicked');
+            this.referenciasService.deleteReferencia(referencia)
+            .then(() => {
+              this.presentLoading();
+            });
+          }
+        }
+      ]
+    });
+    confirm.present();*/
+  }
+  
+  presentLoading() {
+    const loader = this.loadingCtrl.create({
+      content: "Por favor, espera...",
+      duration: 1000
+    });
+    loader.present();
   }
 
 }
