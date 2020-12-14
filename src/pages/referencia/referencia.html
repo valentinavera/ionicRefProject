@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>referencia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Titulo de la publicación</ion-label>
+      <ion-input [(ngModel)]="referencia.titulopub" type="text" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Autores</ion-label>
+      <ion-input type="text" [(ngModel)]="referencia.autores"></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-label>Tipo publicación</ion-label>
+        <ion-select [(ngModel)]="referencia.tipopub">
+          <ion-option value="1">Articulo de revista</ion-option>
+          <ion-option value="2">Articulo en evento</ion-option>
+          <ion-option value="3">Otro</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-label floating>Nombre del evento o revista</ion-label>
+      <ion-input type="text" [(ngModel)]="referencia.eventorevista"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>DOI</ion-label>
+      <ion-input type="text" [(ngModel)]="referencia.doi"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Año de publicación</ion-label>
+      <ion-input type="number" [(ngModel)]="referencia.anyopub"></ion-input>
+    </ion-item>
+    <button ion-button small full (click)="guardarReferencia()">Guardar referencia</button>
+  </ion-list>
+</ion-content>

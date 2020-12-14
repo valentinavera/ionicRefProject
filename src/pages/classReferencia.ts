@@ -1,4 +1,4 @@
-export class referencia {
+export class classReferencia {
     idreferencia: number;
     titulopub: string;
     autores: string;

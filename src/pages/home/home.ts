@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { referencia } from '../referencia';
+import { classReferencia } from '../classReferencia';
+import { ReferenciaPage } from '../referencia/referencia';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  referencias: Array<referencia> = [];
+  referencias: Array<classReferencia> = [];
   constructor(public navCtrl: NavController) {
     this.referencias = [
       {idreferencia: 1,
@@ -20,15 +21,15 @@ export class HomePage {
     ];
   }
 
-  editReferencia(referencia: referencia){
-
+  editReferencia(referencia: classReferencia){
+    this.navCtrl.push(ReferenciaPage,{referencia:referencia});
   }
 
   addReferencia(){
-
+    this.navCtrl.push(ReferenciaPage, {titulopub:{}});
   }
   
-  deleteReferencia(referencia: referencia){
+  deleteReferencia(referencia: classReferencia){
 
   }
 
