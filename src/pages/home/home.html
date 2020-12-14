@@ -1,14 +1,33 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Referencias
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let referencia of referencias">
+      <ion-item (click)="editReferencia(referencia)">
+        <h2>{{referencia.titulopub}}</h2>
+        <h3>{{referencia.autores}}</h3>
+        <p>{{referencia.anyopub}}</p>
+        <p>{{referencia.eventorevista}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteReferencia(referencia)"> 
+          <ion-icon name="trash-outline"></ion-icon>
+          Borrar
+        </button>
+      </ion-item-options>
+  </ion-item-sliding>
+  </ion-list>
+  
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="addReferencia({})">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
