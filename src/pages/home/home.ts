@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
-//import { referenciasService } from '../../services/referenciasServices';
+import { referenciasService } from '../../services/referenciasServices';
 import { classReferencia } from '../classReferencia';
 import { ReferenciaPage } from '../referencia/referencia';
 
@@ -9,20 +9,16 @@ import { ReferenciaPage } from '../referencia/referencia';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  referencias: Array<classReferencia> = [];
+  referencias: any = [];
   constructor(public navCtrl: NavController, 
-    //public referenciasService:referenciasService,
+    public referenciasService:referenciasService,
     public alertCtrl:AlertController, 
     public loadingCtrl:LoadingController) {
-    this.referencias = [
-      {idreferencia: 1,
-        titulopub: 'imp',
-        autores: 'uno, dos',
-        tipopub:3,
-        eventorevista: 'ieee',
-        doi: 'sdfsdfsd',
-        anyopub: 4}
-    ];
+    
+      this.referenciasService.getReferencias().valueChanges()
+      .subscribe((referenciasBD)=>{
+        this.referencias=referenciasBD;
+      });
   }
 
   editReferencia(referencia: classReferencia){
@@ -34,7 +30,7 @@ export class HomePage {
   }
   
   deleteReferencia(referencia: classReferencia){
-    /*const confirm = this.alertCtrl.create({
+    const confirm = this.alertCtrl.create({
       title: 'Eliminar referencia',
       message: '¿Estás seguro de eliminar esta referencia?',
       buttons: [
@@ -56,7 +52,7 @@ export class HomePage {
         }
       ]
     });
-    confirm.present();*/
+    confirm.present();
   }
   
   presentLoading() {
