@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
 import { referenciasService } from '../../services/referenciasServices';
-import { classReferencia } from '../classReferencia';
 import { ReferenciaPage } from '../referencia/referencia';
 
 @Component({
@@ -21,7 +20,7 @@ export class HomePage {
       });
   }
 
-  editReferencia(referencia: classReferencia){
+  editReferencia(referencia: any){
     this.navCtrl.push(ReferenciaPage,{referencia:referencia});
   }
 
@@ -29,7 +28,7 @@ export class HomePage {
     this.navCtrl.push(ReferenciaPage, {titulopub:{}});
   }
   
-  deleteReferencia(referencia: classReferencia){
+  deleteReferencia(referencia: any){
     const confirm = this.alertCtrl.create({
       title: 'Eliminar referencia',
       message: '¿Estás seguro de eliminar esta referencia?',
@@ -58,7 +57,7 @@ export class HomePage {
   presentLoading() {
     const loader = this.loadingCtrl.create({
       content: "Por favor, espera...",
-      duration: 1000
+      duration: 100
     });
     loader.present();
   }

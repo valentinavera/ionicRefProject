@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { classReferencia } from '../classReferencia';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { referenciasService} from '../../services/referenciasServices';
 
 /**
  * Generated class for the ReferenciaPage page.
@@ -15,13 +15,32 @@ import { classReferencia } from '../classReferencia';
   templateUrl: 'referencia.html',
 })
 export class ReferenciaPage {
-  referencia: classReferencia;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  referencia: any;
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public referenciasservices:referenciasService,
+    public alertCtrl: AlertController) {
+
     this.referencia = navParams.data.referencia || {};
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ReferenciaPage');
+  guardarReferencia(){
+    if(!this.referencia.idreferencia){
+      this.referencia.idreferencia = Date.now();
+    }
+    this.referenciasservices.createReferencia(this.referencia);
+    console.log(this.referencia);
+    this.showAlert('Referencia agregada con éxito');
+    this.navCtrl.pop();
+  }
+
+  showAlert(mensaje:string) {
+    const alert = this.alertCtrl.create({
+      title: 'Notificación',
+      subTitle: mensaje,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

@@ -9,16 +9,16 @@ export class referenciasService{
     public getReferencias(){
         return this.BD.list('/referencias/');
     }
-    public getReferencia(id: any){
-        return this.BD.object('/referencias/' + id);
+    public getReferencia(idreferencia:any){
+        return this.BD.object('/referencias/' + idreferencia);
     }
     public createReferencia(referencia:any){
-        return this.BD.database.ref('/referencias/' + referencia.id).set(referencia);
+        return this.BD.database.ref('/referencias/' + referencia.idreferencia).set(referencia);
     }
     public editReferencia(referencia:any){
-        return this.BD.database.ref('/referencias/' + referencia.id).set(referencia);
+        return this.BD.database.ref('/referencias/' + referencia.idreferencia).set(referencia);
     }
     public deleteReferencia(referencia:any){
-        return this.BD.database.ref('/referencias/' + referencia.id).remove();
+        return this.BD.database.ref('/referencias/' + referencia.idreferencia).remove();
     }
 }
