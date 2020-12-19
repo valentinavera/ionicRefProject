@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { referenciaModel } from '../../app/models/referenciaModel';
 import { referenciasService} from '../../services/referenciasServices';
 
 /**
@@ -15,13 +16,13 @@ import { referenciasService} from '../../services/referenciasServices';
   templateUrl: 'referencia.html',
 })
 export class ReferenciaPage {
-  referencia: any;
+  referencia = {} as referenciaModel;
+  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public referenciasservices:referenciasService,
     public alertCtrl: AlertController) {
-
-    this.referencia = navParams.data.referencia || {};
+      this.referencia = navParams.data.referencia;
   }
 
   guardarReferencia(){

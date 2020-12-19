@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
+import { referenciaModel } from "../app/models/referenciaModel";
 
 @Injectable()
 export class referenciasService{
@@ -9,16 +10,16 @@ export class referenciasService{
     public getReferencias(){
         return this.BD.list('/referencias/');
     }
-    public getReferencia(idreferencia:any){
+    public getReferencia(idreferencia:referenciaModel){
         return this.BD.object('/referencias/' + idreferencia);
     }
-    public createReferencia(referencia:any){
+    public createReferencia(referencia:referenciaModel){
         return this.BD.database.ref('/referencias/' + referencia.idreferencia).set(referencia);
     }
-    public editReferencia(referencia:any){
+    public editReferencia(referencia:referenciaModel){
         return this.BD.database.ref('/referencias/' + referencia.idreferencia).set(referencia);
     }
-    public deleteReferencia(referencia:any){
+    public deleteReferencia(referencia:referenciaModel){
         return this.BD.database.ref('/referencias/' + referencia.idreferencia).remove();
     }
 }

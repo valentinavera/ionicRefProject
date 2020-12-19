@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
+import { referenciaModel } from '../../app/models/referenciaModel';
 import { referenciasService } from '../../services/referenciasServices';
 import { ReferenciaPage } from '../referencia/referencia';
 
@@ -20,8 +21,8 @@ export class HomePage {
       });
   }
 
-  editReferencia(referencia: any){
-    this.navCtrl.push(ReferenciaPage,{referencia:referencia});
+  editReferencia(ref: referenciaModel){
+    this.navCtrl.push(ReferenciaPage,{referencia:ref});
   }
 
   addReferencia(){
