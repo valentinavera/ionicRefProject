@@ -11,6 +11,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from 'angularfire2';
 import { referenciasService } from '../services/referenciasServices';
+import { sessionServices } from '../services/sessionServices';
+import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario';
+import { InicioSesionPage } from '../pages/inicio-sesion/inicio-sesion';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAt6vUSXSsMcUCXQ2jA8tTEYfYOeDC9GM4",
@@ -26,7 +29,9 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    ReferenciaPage
+    ReferenciaPage,
+    RegistroUsuarioPage,
+    InicioSesionPage
   ],
   imports: [
     BrowserModule,
@@ -39,13 +44,16 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    ReferenciaPage
+    ReferenciaPage,
+    RegistroUsuarioPage,
+    InicioSesionPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    referenciasService
+    referenciasService,
+    sessionServices
   ]
 })
 export class AppModule {}

@@ -26,7 +26,7 @@ export class HomePage {
   }
 
   addReferencia(){
-    this.navCtrl.push(ReferenciaPage, {titulopub:{}});
+    this.navCtrl.push(ReferenciaPage, {referencia:{}});
   }
   
   deleteReferencia(referencia: any){
