@@ -24,13 +24,9 @@ export class RegistroUsuarioPage {
     public alertCtrl:AlertController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegistroUsuarioPage');
-  }
-
   crearUsuario(){
     this.authService.createUser(this.varUsuario);
-    this.showAlert('Referencia agregada con éxito');
+    this.showAlert('Registro completado con éxito');
     this.navCtrl.setRoot(HomePage);
   }
 

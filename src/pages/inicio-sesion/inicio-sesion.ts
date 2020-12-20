@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { usuario } from '../../app/models/usuarioModel';
+import { sessionServices } from '../../services/sessionServices';
+import { HomePage } from '../home/home';
+import { RegistroUsuarioPage } from '../registro-usuario/registro-usuario';
 
 /**
  * Generated class for the InicioSesionPage page.
@@ -14,12 +18,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'inicio-sesion.html',
 })
 export class InicioSesionPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  varUsuario = {} as usuario;
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public authService: sessionServices,
+    public alertCtrl: AlertController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InicioSesionPage');
+  registrarView(){
+    this.navCtrl.push(RegistroUsuarioPage);
+  }
+  inicioSesion(){
+    this.authService.signInUser(this.varUsuario);
+    this.showAlert('Sesión iniciada exitosamente');
+    this.navCtrl.setRoot(HomePage);
+  }
+
+  showAlert(mensaje:string) {
+    const alert = this.alertCtrl.create({
+      title: 'Notificación',
+      subTitle: mensaje,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }
