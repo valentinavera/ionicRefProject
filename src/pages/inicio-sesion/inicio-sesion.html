@@ -21,10 +21,8 @@
     <ion-item>
       <ion-label floating>Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="varUsuario.password"></ion-input>
-    </ion-item>
-
-    <button ion-button color="secondary" round (click)="inicioSesion()">Iniciar sesión</button>
-    <button ion-button round (click)="registrarView()">Registrarse</button>
-  
+    </ion-item>  
   </ion-list>
+  <button ion-button color="secondary" round (click)="inicioSesion()">Iniciar sesión</button>
+  <button ion-button round small (click)="registrarView()">Registrarse</button>
 </ion-content>

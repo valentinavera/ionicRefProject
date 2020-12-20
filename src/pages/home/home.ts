@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController } from 'ionic-angular';
 import { referenciaModel } from '../../app/models/referenciaModel';
 import { referenciasService } from '../../services/referenciasServices';
+import { BuscarPage } from '../buscar/buscar';
 import { ReferenciaPage } from '../referencia/referencia';
 
 @Component({
@@ -27,6 +28,10 @@ export class HomePage {
 
   addReferencia(){
     this.navCtrl.push(ReferenciaPage, {referencia:{}});
+  }
+
+  buscarReferencia(){
+    this.navCtrl.push(BuscarPage);
   }
   
   deleteReferencia(referencia: any){

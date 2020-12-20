@@ -25,9 +25,13 @@ export class RegistroUsuarioPage {
   }
 
   crearUsuario(){
-    this.authService.createUser(this.varUsuario);
-    this.showAlert('Registro completado con éxito');
-    this.navCtrl.setRoot(HomePage);
+    this.authService.createUser(this.varUsuario).then((res)=>{
+      this.showAlert('Registro completado con éxito');
+      this.navCtrl.setRoot(HomePage);
+    }).catch((e)=>{
+      console.log(e);
+      this.showAlert(e.message);
+    });
   }
 
   showAlert(mensaje:string) {

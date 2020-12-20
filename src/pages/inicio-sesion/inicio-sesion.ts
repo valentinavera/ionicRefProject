@@ -18,7 +18,11 @@ import { RegistroUsuarioPage } from '../registro-usuario/registro-usuario';
   templateUrl: 'inicio-sesion.html',
 })
 export class InicioSesionPage {
-  varUsuario = {} as usuario;
+  //varUsuario = {} as usuario;
+  varUsuario = {
+    email : 'naty@gmail.com',
+    password : '1234567890'
+  } as usuario;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public authService: sessionServices,
@@ -29,9 +33,14 @@ export class InicioSesionPage {
     this.navCtrl.push(RegistroUsuarioPage);
   }
   inicioSesion(){
-    this.authService.signInUser(this.varUsuario);
-    this.showAlert('Sesión iniciada exitosamente');
-    this.navCtrl.setRoot(HomePage);
+    this.authService.signInUser(this.varUsuario).then((res)=>{
+      console.log(res);
+      this.showAlert('Sesión iniciada exitosamente');
+      this.navCtrl.setRoot(HomePage);
+    }).catch((e)=>{
+      console.log(e);
+      this.showAlert(e.message);
+    });
   }
 
   showAlert(mensaje:string) {
