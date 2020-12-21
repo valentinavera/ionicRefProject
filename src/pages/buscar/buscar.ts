@@ -31,7 +31,7 @@ export class BuscarPage {
       .subscribe((referenciasBD)=>{
         this.listQuery=referenciasBD;
         this.referenciasQuery = this.listQuery.filter(data=>{
-          return data.titulopub.toString().trim() === this.query;
+          return data.anyopub.toString().trim() === this.query;
         });
       });
   }
