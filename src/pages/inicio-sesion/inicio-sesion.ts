@@ -18,11 +18,11 @@ import { RegistroUsuarioPage } from '../registro-usuario/registro-usuario';
   templateUrl: 'inicio-sesion.html',
 })
 export class InicioSesionPage {
-  //varUsuario = {} as usuario;
-  varUsuario = {
+  varUsuario = {} as usuario;
+  /*varUsuario = {
     email : 'naty@gmail.com',
     password : '1234567890'
-  } as usuario;
+  } as usuario;*/
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public authService: sessionServices,
