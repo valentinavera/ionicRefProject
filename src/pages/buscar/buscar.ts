@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { referenciaModel } from '../../app/models/referenciaModel';
+//import { referenciaModel } from '../../app/models/referenciaModel';
 import { referenciasService } from '../../services/referenciasServices';
 
 /**
@@ -17,8 +17,9 @@ import { referenciasService } from '../../services/referenciasServices';
 })
 export class BuscarPage {
 
-  query = {} as referenciaModel;
+  query:string;
   listQuery: any = [];
+  referenciasQuery: any = [];
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -26,7 +27,18 @@ export class BuscarPage {
   }
 
   buscarReferencia(){
-    this.refService.getReferencia(this.query);
+
+    this.refService.getReferencias().valueChanges()
+      .subscribe((referenciasBD)=>{
+        this.listQuery=referenciasBD;
+        //console.log(this.listQuery);
+        this.referenciasQuery = this.listQuery.filter(data=>{
+          console.log(this.referenciasQuery);
+          return data.anyopub.toString().trim() === this.query;
+        });
+      });
+
+      
   }
 
 }
