@@ -13,7 +13,7 @@ export class HomePage {
   referencias: any = [];
   constructor(public navCtrl: NavController, 
     public referenciasService:referenciasService,
-    public alertCtrl:AlertController, 
+    private alertCtrl:AlertController, 
     public loadingCtrl:LoadingController) {
     
       this.referenciasService.getReferencias().valueChanges()

@@ -26,7 +26,7 @@ export class InicioSesionPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public authService: sessionServices,
-    public alertCtrl: AlertController) {
+    private alertCtrl: AlertController) {
   }
 
   registrarView(){

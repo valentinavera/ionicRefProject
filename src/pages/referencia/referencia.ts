@@ -21,7 +21,7 @@ export class ReferenciaPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public referenciasservices:referenciasService,
-    public alertCtrl: AlertController) {
+    private alertCtrl: AlertController) {
       this.referencia = navParams.data.referencia;
   }
 

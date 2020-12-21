@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-//import { referenciaModel } from '../../app/models/referenciaModel';
 import { referenciasService } from '../../services/referenciasServices';
 
 /**
@@ -31,14 +30,11 @@ export class BuscarPage {
     this.refService.getReferencias().valueChanges()
       .subscribe((referenciasBD)=>{
         this.listQuery=referenciasBD;
-        //console.log(this.listQuery);
         this.referenciasQuery = this.listQuery.filter(data=>{
-          console.log(this.referenciasQuery);
-          return data.anyopub.toString().trim() === this.query;
+          return data.titulopub.toString().trim() === this.query;
         });
       });
-
-      
   }
+
 
 }
