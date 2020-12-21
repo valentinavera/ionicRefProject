@@ -23,17 +23,19 @@ export class BuscarPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public refService: referenciasService) {
+      this.refService.getReferencias().valueChanges().subscribe((referenciasBD)=>{
+        this.listQuery=referenciasBD;
+      });
   }
 
-  buscarReferencia(){
-
-    this.refService.getReferencias().valueChanges()
-      .subscribe((referenciasBD)=>{
-        this.listQuery=referenciasBD;
-        this.referenciasQuery = this.listQuery.filter(data=>{
-          return data.anyopub.toString().trim() === this.query;
-        });
-      });
+  buscarReferencia(event){
+    
+    this.query = event.value;
+    console.log(this.listQuery);
+    
+    this.referenciasQuery = this.listQuery.filter(data=>{
+      return data.anyopub.toString().trim() === this.query;
+    });
   }
 
 

@@ -6,14 +6,7 @@
 -->
 <ion-header translucent>
   <ion-navbar>
-    <ion-item col-12>
-      <ion-input type="search" [(ngModel)]="query"></ion-input>
-    </ion-item>
-    <ion-buttons end icon-only>
-      <button ion-button icon-left (click)="buscarReferencia()">
-          <ion-icon name="search-outline"></ion-icon>
-      </button>
-  </ion-buttons>
+    <ion-searchbar (ionChange)="buscarReferencia($event)"></ion-searchbar>
   </ion-navbar>
 </ion-header>
 
